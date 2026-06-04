@@ -9,8 +9,7 @@
 Este é o painel principal do projeto **Dashboard de Inclusão PCD**, desenvolvido com Antigravity IDE.  
 Ele apresenta indicadores de inclusão, headcount, salário médio, e cumprimento da cota legal (Lei 8.213/91).
 
-![Dashboard de Inclusão PCD](dashboard_pcd.png)
-
+![Dashboard de Inclusão PCD](Dashboard%20de%20Inclus%C3%A3o%20PCD.png)
 
 ---
 ## 📋 Descrição
@@ -154,6 +153,38 @@ http://localhost:8000
 
 ---
 
+## 💡 Integração com Power BI
+Além da versão web interativa, os arquivos CSV exportados podem ser utilizados diretamente no Power BI para análises corporativas avançadas.
+Com o Power BI, é possível:
+
+Importar os CSVs como fontes de dados.
+
+Criar dashboards complementares com segmentações dinâmicas e relatórios executivos.
+
+Comparar indicadores (headcount, salário médio, proporção PCD) com outras bases corporativas.
+
+Publicar relatórios online, integrando com o dashboard web para uma visão 360° da inclusão de PCD.
+
+Essa integração torna o projeto flexível: pode ser explorado tanto via Antigravity IDE quanto via Power BI, ampliando o alcance das análises de RH. 
+
+---
+
+## 🤖 Inteligência Artificial no Projeto
+
+O projeto também demonstra como a IA pode apoiar a gestão de pessoas:
+
+Automação de ETL: scripts Python que limpam e exportam dados sem intervenção manual.
+
+Dashboards assistidos por IA: uso do Antigravity IDE para acelerar desenvolvimento e garantir consistência visual.
+
+Insights preditivos: a mesma base pode ser integrada a modelos de machine learning (ex.: previsão de turnover, análise de perfil de contratação).
+
+Assistência inteligente: IA auxilia na documentação, explicação dos indicadores e geração de relatórios.
+
+A combinação de BI tradicional (Power BI) com IA aplicada (Antigravity IDE + Python) mostra como empresas podem evoluir da simples análise descritiva para uma gestão preditiva e estratégica de RH.
+
+---
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a **Licença MIT**.
@@ -183,4 +214,4 @@ OU AO USO OU OUTRAS NEGOCIAÇÕES RELACIONADAS AO SOFTWARE.
 
 ---
 
-> Desenvolvido por **r9drig-tech** | Powered by **Antigravity IDE**
+> Desenvolvido por **Rodrigo Salgado** | Powered by **Antigravity IDE**
