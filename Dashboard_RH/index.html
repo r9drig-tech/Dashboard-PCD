@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard de Recursos Humanos focado na inclusão de Pessoas com Deficiência (PCD). Indicadores estratégicos de headcount, salários, rotatividade e cota legal.">
+    <meta name="keywords" content="HR Dashboard, Recursos Humanos, PCD, Inclusão, Diversidade, KPIs de RH, Cota Legal, Turnover">
+    <meta name="author" content="Antigravity HR Analytics">
+    <title>Dashboard de RH — Inclusão & Diversidade PCD</title>
+    
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- CSS Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Sidebar de Filtros -->
+        <aside class="sidebar" id="filter-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>HR Analytics</span>
+                </div>
+                <p class="tagline">Inclusão & Diversidade</p>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="section-title">Filtros de Período</h3>
+                
+                <!-- Toggle de Tipo de Período -->
+                <div class="period-type-toggle">
+                    <button class="btn-toggle active" id="btn-period-mensal" onclick="setPeriodType('mensal')">Mensal</button>
+                    <button class="btn-toggle" id="btn-period-trimestral" onclick="setPeriodType('trimestral')">Trimestral</button>
+                    <button class="btn-toggle" id="btn-period-anual" onclick="setPeriodType('anual')">Anual</button>
+                </div>
+                
+                <!-- Dropdown de Período Específico -->
+                <div class="form-group">
+                    <label for="select-period">Período Selecionado</label>
+                    <select id="select-period" class="form-control" onchange="applyFilters()">
+                        <!-- Dinâmico pelo JS -->
+                    </select>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="section-title">Filtros Organizacionais</h3>
+                
+                <!-- Filtro de Departamento -->
+                <div class="form-group">
+                    <label for="select-dept">Departamento / Área</label>
+                    <select id="select-dept" class="form-control" onchange="applyFilters()">
+                        <option value="Todos">Todos os Departamentos</option>
+                        <option value="RH">Recursos Humanos (RH)</option>
+                        <option value="TI">Tecnologia da Informação (TI)</option>
+                        <option value="Projetos">Projetos</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Jurídico">Jurídico</option>
+                        <option value="Operações">Operações</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Comercial">Comercial</option>
+                    </select>
+                </div>
+                
+                <!-- Filtro de PCD -->
+                <div class="form-group">
+                    <label for="select-pcd-status">Filtro PCD</label>
+                    <select id="select-pcd-status" class="form-control" onchange="applyFilters()">
+                        <option value="Todos">Todos os Colaboradores</option>
+                        <option value="Sim">Apenas PCD</option>
+                        <option value="Não">Apenas Não-PCD</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="sidebar-section simulation-box">
+                <div class="simulation-header">
+                    <h3 class="section-title">Modo Demonstração</h3>
+                    <span class="badge-sim">Beta</span>
+                </div>
+                <p class="sim-text">O arquivo original de dados simulados não possui registro de afastamentos.</p>
+                <div class="toggle-container">
+                    <span class="toggle-label">Simular Afastamentos</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-sim-leaves" onchange="toggleLeaveSimulation()">
+                        <span class="slider round"></span>
+                    </</label>
+                </div>
+                <p class="sim-note" id="sim-status-text">Métricas de afastamento baseadas em zero.</p>
+            </div>
+            
+            <div class="sidebar-footer">
+                <p>© 2026 Antigravity IDE</p>
+                <p>Dashboard Versão 1.0</p>
+            </div>
+        </aside>
+        
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            
+            <!-- Topbar / Header -->
+            <header class="dashboard-header">
+                <div class="header-titles">
+                    <h1 id="main-dashboard-title">Dashboard de Inclusão PCD</h1>
+                    <p class="header-subtitle">Análise demográfica, comparativos salariais e cumprimento de cota legal (Lei 8.213/91)</p>
+                </div>
+                <div class="current-filter-badge" id="active-filters-summary">
+                    Filtro: Todos | Anual 2024
+                </div>
+            </header>
+            
+            <!-- Grid de Cartões de Métricas (KPIs) -->
+            <section class="kpi-grid">
+                
+                <!-- Card 1: Headcount Total -->
+                <div class="kpi-card" id="kpi-headcount">
+                    <div class="kpi-card-header">
+                        <span class="kpi-label">Headcount Ativo</span>
+                        <div class="kpi-icon icon-blue">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="val-headcount">0</div>
+                    <div class="kpi-trend" id="trend-headcount">
+                        <span class="trend-indicator up">▲</span>
+                        <span class="trend-text" id="val-headcount-sub">Carregando...</span>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Salário Médio -->
+                <div class="kpi-card" id="kpi-salary">
+                    <div class="kpi-card-header">
+                        <span class="kpi-label">Salário Médio</span>
+                        <div class="kpi-icon icon-purple">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="val-salary">R$ 0,00</div>
+                    <div class="kpi-trend" id="trend-salary">
+                        <span class="trend-indicator">◆</span>
+                        <span class="trend-text" id="val-salary-sub">Ativos no período</span>
+                    </div>
+                </div>
+                
+                <!-- Card 3: Afastados -->
+                <div class="kpi-card" id="kpi-leaves">
+                    <div class="kpi-card-header">
+                        <span class="kpi-label">Colaboradores Afastados</span>
+                        <div class="kpi-icon icon-orange">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="val-leaves">0</div>
+                    <div class="kpi-trend" id="trend-leaves">
+                        <span class="trend-text" id="val-leaves-sub">Nenhum afastamento registrado</span>
+                    </div>
+                </div>
+                
+                <!-- Card 4: Cota PCD -->
+                <div class="kpi-card" id="kpi-quota">
+                    <div class="kpi-card-header">
+                        <span class="kpi-label">Cota PCD (%)</span>
+                        <div class="kpi-icon icon-teal">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="val-quota">0,0%</div>
+                    <div class="kpi-trend" id="trend-quota">
+                        <span class="trend-indicator ok">✔</span>
+                        <span class="trend-text" id="val-quota-sub">Supera cota legal (2%)</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Grid de Gráficos (Fileira 1) -->
+            <section class="charts-row">
+                
+                <!-- Gráfico 1: Evolução Histórica -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <h3 class="chart-title">Evolução Histórica da Contratação & Headcount PCD</h3>
+                        <p class="chart-subtitle">Dados de admissões, headcount e proporção de PCD ao longo de 2024</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart-evolution"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Gráfico 2: Distribuição por Tipo de Deficiência -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <h3 class="chart-title">Distribuição por Categoria de Deficiência</h3>
+                        <p class="chart-subtitle">Composição percentual do quadro total de colaboradores PCD</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart-disability-types"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Grid de Gráficos (Fileira 2) -->
+            <section class="charts-row">
+                
+                <!-- Gráfico 3: Salário por Departamento -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <h3 class="chart-title">Média Salarial por Departamento</h3>
+                        <p class="chart-subtitle">Comparativo de remuneração bruta média entre áreas organizacionais</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart-salary-by-dept"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Gráfico 4: Comparativo PCD vs Não-PCD -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <h3 class="chart-title">Comparativo Estratégico: PCD vs Não-PCD</h3>
+                        <p class="chart-subtitle">Relação de salário médio, tempo médio de empresa (anos) e taxa de desligamento (%)</p>
+                    </div>
+                    <div class="chart-container comp-charts-container">
+                        <div class="comp-chart-wrapper"><canvas id="chart-comp-salary"></canvas></div>
+                        <div class="comp-chart-wrapper"><canvas id="chart-comp-tenure"></canvas></div>
+                        <div class="comp-chart-wrapper"><canvas id="chart-comp-leaves"></canvas></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção de Tabelas de Departamento e Líderes -->
+            <section class="tables-row">
+                
+                <!-- Tabela de Departamentos e Gerentes -->
+                <div class="data-table-card card-full">
+                    <div class="table-card-header">
+                        <div>
+                            <h3 class="table-title">Distribuição por Departamento e Líderes Responsáveis</h3>
+                            <p class="table-subtitle">Consolidado de headcount, salários, taxa de turnover e gestor direto por área</p>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="table-departments">
+                            <thead>
+                                <tr>
+                                    <th>Departamento / Área</th>
+                                    <th>Líder Responsável</th>
+                                    <th>Cargo Líder</th>
+                                    <th class="text-center">Funcionários Ativos</th>
+                                    <th class="text-center">Colaboradores PCD</th>
+                                    <th class="text-right">Salário Médio</th>
+                                    <th class="text-right">Taxa de Turnover (Período)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-departments-body">
+                                <!-- Preenchido dinamicamente pelo JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção de Detalhamento / Lista Geral de Colaboradores -->
+            <section class="tables-row">
+                <div class="data-table-card card-full">
+                    <div class="table-card-header search-header">
+                        <div>
+                            <h3 class="table-title">Banco de Talentos / Detalhamento Geral</h3>
+                            <p class="table-subtitle">Listagem de todos os colaboradores ativos e desligados com filtros rápidos</p>
+                        </div>
+                        <div class="table-actions">
+                            <div class="search-box">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" id="input-search-employees" placeholder="Pesquisar por nome ou cargo..." onkeyup="filterEmployeeTable()">
+                            </div>
+                            <button class="btn-primary" onclick="exportEmployeeTableToCSV()">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper scrollable-table">
+                        <table class="data-table" id="table-employees">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Departamento</th>
+                                    <th>Cargo</th>
+                                    <th>Status</th>
+                                    <th>Data Admissão</th>
+                                    <th class="text-right">Salário</th>
+                                    <th class="text-center">PCD</th>
+                                    <th>Tipo de Deficiência</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-employees-body">
+                                <!-- Preenchido dinamicamente pelo JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+    
+    <!-- Script Principal -->
+    <script src="app.js"></script>
+</body>
+</html>

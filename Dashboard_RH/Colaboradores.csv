@@ -1,0 +1,36 @@
+﻿ID,Nome,Área,Cargo,Status,Data Admissão,Salário (R$),PCD,Tipo Deficiência
+1,Ana Lima,RH,Supervisor,Ativo,2022-02-17,3500,Não,—
+2,Bruno Costa,Comercial,Analista Pleno,Ativo,2018-03-07,3500,Não,—
+3,Carlos Mendes,Comercial,Gerente,Desligado,2021-05-17,3500,Não,—
+4,Diana Rocha,Projetos,Supervisor,Desligado,2020-05-09,4200,Não,—
+5,Eduardo Silva,TI,Analista Pleno,Ativo,2022-07-16,15000,Sim,Auditiva (CID H90.3)
+6,Fernanda Alves,Financeiro,Analista Pleno,Ativo,2019-11-28,5800,Não,—
+7,Gabriel Souza,Jurídico,Analista Jr,Ativo,2018-07-29,3500,Não,—
+8,Helena Martins,Operações,Analista Jr,Ativo,2022-10-02,5800,Sim,Motora (CID M80)
+9,Igor Ferreira,Jurídico,Analista Jr,Desligado,2021-01-03,3500,Não,—
+10,Julia Nunes,Marketing,Supervisor,Ativo,2022-08-26,12000,Não,—
+11,Lucas Oliveira,TI,Gerente,Ativo,2021-12-13,3500,Não,—
+12,Mariana Santos,RH,Analista Pleno,Ativo,2022-05-03,5800,Sim,Intelectual (CID F70)
+13,Nathan Pereira,Projetos,Gerente,Ativo,2020-02-18,5800,Sim,Múltipla
+14,Olivia Carvalho,Marketing,Analista Pleno,Ativo,2018-11-30,5800,Não,—
+15,Pedro Gomes,Financeiro,Supervisor,Ativo,2021-12-08,12000,Não,—
+16,Quintino Dias,Operações,Gerente,Ativo,2018-12-01,7200,Não,—
+17,Rafaela Torres,TI,Analista Pleno,Ativo,2021-11-03,5800,Não,—
+18,Samuel Ribeiro,Operações,Analista Jr,Ativo,2022-07-07,5800,Não,—
+19,Tatiana Luz,Marketing,Analista Pleno,Ativo,2023-02-14,9500,Não,—
+20,Ulisses Moura,Projetos,Analista Pleno,Desligado,2020-03-21,12000,Não,—
+21,Vanessa Campos,Operações,Gerente,Ativo,2018-10-13,4200,Não,—
+22,Wagner Pinto,Jurídico,Analista Sr,Ativo,2023-01-13,9500,Não,—
+23,Xuxa Barros,Projetos,Analista Jr,Ativo,2018-10-11,9500,Não,—
+24,Yasmin Faria,Financeiro,Gerente,Ativo,2022-10-30,3500,Não,—
+25,Zé Cardoso,Jurídico,Supervisor,Ativo,2022-06-11,12000,Sim,Múltipla
+26,Adriana Castro,Projetos,Supervisor,Ativo,2020-02-28,7200,Sim,Auditiva (CID H90.3)
+27,Bernardo Lima,TI,Gerente,Ativo,2023-06-12,9500,Não,—
+28,Camila Freitas,Operações,Gerente,Ativo,2021-10-28,9500,Não,—
+29,Daniel Cruz,Jurídico,Analista Pleno,Ativo,2018-08-17,5800,Não,—
+30,Elaine Soares,Operações,Supervisor,Desligado,2018-01-07,12000,Não,—
+31,Fábio Lopes,Operações,Gerente,Ativo,2020-11-05,3500,Sim,Múltipla
+32,Gisele Teixeira,Financeiro,Analista Sr,Desligado,2021-06-01,4200,Não,—
+33,Henrique Vieira,TI,Supervisor,Ativo,2021-01-09,15000,Não,—
+34,Isabela Moraes,RH,Analista Sr,Ativo,2020-09-27,3500,Não,—
+35,João Batista,Comercial,Supervisor,Ativo,2019-05-06,3500,Não,—
