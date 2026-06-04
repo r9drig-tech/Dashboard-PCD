@@ -4,6 +4,11 @@
 
 ---
 
+## 📊 Visualização do Dashboard
+
+![Dashboard de RH com PCD](images/dashboard.png)
+
+---
 ## 📋 Descrição
 
 Este projeto realiza a extração, transformação e visualização de indicadores estratégicos de Recursos Humanos de uma empresa fictícia, com ênfase no cumprimento da **cota legal de PCD (Lei 8.213/91)**.
@@ -154,25 +159,24 @@ MIT License
 
 Copyright (c) 2026 r9drig-tech
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste software e dos arquivos de
+documentação associados (o “Software”),para lidar com o Software sem restrições, incluindo, sem limitação,
+os direitos de usar, copiar, modificar, mesclar, publicar, distribuir,
+sublicenciar e/ou vender cópias do Software, e permitir que pessoas às
+quais o Software seja fornecido o façam, sujeito às seguintes condições:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+O aviso de copyright acima e este aviso de permissão deverão ser incluídos em todas as cópias ou
+partes substanciais do Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+O SOFTWARE É FORNECIDO “NO ESTADO EM QUE SE ENCONTRA”, SEM QUALQUER GARANTIA DE QUALQUER TIPO,
+EXPRESSA OU IMPLÍCITA, INCLUINDO,
+MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO E NÃO VIOLAÇÃO.
+EM NENHUMA CIRCUNSTÂNCIA OS AUTORES OU DETENTORES DOS DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER REIVINDICAÇÃO,
+DANO OU OUTRA RESPONSABILIDADE,
+SEJA EM UMA AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, DECORRENTE DE OU RELACIONADA AO SOFTWARE
+OU AO USO OU OUTRAS NEGOCIAÇÕES RELACIONADAS AO SOFTWARE.
 ```
 
 ---
 
-> Desenvolvido com 💙 por **r9drig-tech** | Powered by **Antigravity IDE**
+> Desenvolvido por **r9drig-tech** | Powered by **Antigravity IDE**
