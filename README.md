@@ -9,7 +9,7 @@
 Este é o painel principal do projeto **Dashboard de Inclusão PCD**, desenvolvido com Antigravity IDE.  
 Ele apresenta indicadores de inclusão, headcount, salário médio, e cumprimento da cota legal (Lei 8.213/91).
 
-![Dashboard de Inclusão PCD](images/dashboard.png)
+![Dashboard de Inclusão PCD](dashboard_pcd.png)
 
 
 ---
